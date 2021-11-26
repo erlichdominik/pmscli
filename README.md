@@ -19,7 +19,7 @@ $ npm install -g pmscli
 $ pmscli COMMAND
 running command...
 $ pmscli (-v|--version|version)
-pmscli/0.0.0 linux-x64 node-v14.18.1
+pmscli/0.0.0 darwin-arm64 node-v17.0.1
 $ pmscli --help [COMMAND]
 USAGE
   $ pmscli COMMAND
@@ -28,9 +28,26 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`pmscli add [FILE]`](#pmscli-add-file)
 * [`pmscli goodbye [FILE]`](#pmscli-goodbye-file)
 * [`pmscli hello [FILE]`](#pmscli-hello-file)
 * [`pmscli help [COMMAND]`](#pmscli-help-command)
+
+## `pmscli add [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ pmscli add [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/add.ts](https://github.com/erlichdominik/pmscli/blob/v0.0.0/src/commands/add.ts)_
 
 ## `pmscli goodbye [FILE]`
 
