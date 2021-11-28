@@ -30,9 +30,9 @@ export default class Add extends Command {
       optionFlag = response.option;
     }
     // const testObject: Task = {
-    //   TaskId: 1,
-    //   description: "test description",
-    //   priority: 1,
+    //   TaskId: 2,
+    //   description: "some other test description",
+    //   priority: 2,
     // };
     // this._dbService.postTask(testObject);
     // const name = flags.name ?? 'world'
