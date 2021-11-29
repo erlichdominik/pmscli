@@ -9,3 +9,29 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Project {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  priority    Int
+  Tasks       Task[]
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  description String
+  projectID   Int
+  priority    Int
+  name        String
+  project     Project   @relation(fields: [projectID], references: [id])
+  subTasks    Subtask[]
+}
+
+model Subtask {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  taskID      Int
+  task        Task   @relation(fields: [taskID], references: [id])
+}
