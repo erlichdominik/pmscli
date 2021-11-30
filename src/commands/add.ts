@@ -5,6 +5,7 @@ import { JsDbApi } from "../services/json-db-api/js-db-api";
 
 export default class Add extends Command {
   static description = "describe the command here";
+  // get instance of dbService
   private _dbService: JsDbApi = JsDbApi.getInstance();
 
   static flags = {
@@ -14,10 +15,6 @@ export default class Add extends Command {
       description: "type of adding element",
       options: ["task", "project"],
     }),
-    // flag with a value (-n, --name=VALUE)
-    // name: flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    // force: flags.boolean({char: 'f'}),
   };
 
   // static args = [{ name: "file" }];
@@ -25,22 +22,41 @@ export default class Add extends Command {
   async run() {
     const { args, flags } = this.parse(Add);
     let optionFlag = flags.option;
+    // check if user provide any option with flag
     if (!optionFlag) {
       let response = await inquirer.prompt([this.getOptionQuestion()]);
       optionFlag = response.option;
     }
-    // const testObject: Task = {
-    //   TaskId: 2,
-    //   description: "some other test description",
-    //   priority: 2,
-    // };
-    // this._dbService.postTask(testObject);
-    // const name = flags.name ?? 'world'
-    // this.log(`hello ${name} from /Users/dominikerlich/Programming/pmscli/src/commands/add.ts`)
-    // if (args.file && flags.force) {
-    //   this.log(`you input --force and --file: ${args.file}`)
-    // }
+    // if user wants to add task, check if we have any project
   }
+
+  private getTaskDataQuestions() {
+    return [
+      {
+        name: "name",
+        message: "provide name",
+        type: "input",
+      },
+      {
+        name: "description",
+        message: "provide description",
+        type: "input",
+      },
+      {
+        name: "priority",
+        message: "provide priority",
+        type: "list",
+        choices: [
+          { name: "1" },
+          { name: "2" },
+          { name: "3" },
+          { name: "4" },
+          { name: "5" },
+        ],
+      },
+    ];
+  }
+
   private getOptionQuestion() {
     let response = {
       name: "option",
